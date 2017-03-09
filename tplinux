@@ -1,0 +1,7 @@
+#!/bin/bash
+best=$(usr/local/bin/tpytb --list-formats $1 | grep best)
+if[ "$?" -eq "0"];
+then format=$(echo $best | cut -c1-3);
+/usr/local/bin/tpytb -x -f $format -o "~/musique/%(title)s.%(ext)s" $1;
+else echo "Put a correct link here";
+fi

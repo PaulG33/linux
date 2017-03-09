@@ -1,0 +1,30 @@
+#!/bin/bash
+dossier=$(echo "/home/telecharmentytb")
+touch /home/Rapport.txt
+while true
+do
+	fichiers=$(find $dossier -name "*.txt")
+	if [[ ! -z $fichiers ]];then
+		echo "Compte rendu" >>
+		echo "téléchargement en cours"
+		
+		for f in $fichiers
+		do
+			while read line; do
+				$HOME/tplinux.sh $line
+				
+				if (( $?==true ));then
+					echo "pas d'erreur" >> /home/Rapport.txt
+				else
+					echo "$line erreur" >> /home/Rapport.txt
+				fi
+			done <$f
+
+			if [ -e $f then];then
+				rm $f
+		done
+		echo "Telechargement fini"
+	fr
+	sleep 1
+	done </dev/null 2>&1 &
+disown
